@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+          .entry{
+              -webkit-padding-start: 30px;
+          }
+          .entry li {
+              line-height: 29px;
+              margin-left: -10px;
+          }
+          .entry li div{
+              margin-right: 10px;
+              padding-left: 8px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              background: #222222;
+              color: white;
+              word-break: break-all;
+              -ms-word-wrap: break-word;
+              word-wrap: break-word;
+              line-height: 15px;
+              font-size: 10pt;
+          }
+          .entry li button{
+              margin-top: 5px;
+              height: 35px;
+              color: #111111;
+          }
+        </style>
+    </head>
+
+    <body>
+        <div class="blog-header">
+            <h3>Java Interface 可用于接口测试</h3>
+        </div>
+
+        <script>
+            function callHello(){
+                AndroidNative.hello();
+            }
+
+            function callHelloStr(){
+                AndroidNative.hello('Hello Android');
+            }
+
+            function callAndroid(){
+                var temp = AndroidNative.getAndroid();
+                console.log(temp);
+                alert(temp);
+            }
+
+            function callAndroidTime(){
+                var temp = AndroidNative.getAndroidTime();
+                var jsEndTime = (new Date()).valueOf();
+                var pageTime = jsEndTime - temp;
+
+                console.log("temp:" +temp);
+                console.log("jsEndTime:" +jsEndTime);
+                console.log("pageTime:" +pageTime);
+            }
+        </script>
+
+        <ul class="entry">
+            <li>
+                Toast 提示<br/>
+                代码：<br/>
+                <div>
+                    AndroidNative.hello();
+                </div>
+                <button onclick="callHello()">测试调用 Native hello()</button>
+            </li>
+
+            <br/>
+            <li>
+                Toast 提示带参数<br/>
+                代码：<br/>
+                <div>
+                    AndroidNative.hello('Hello Android');
+                </div>
+                <button onclick="callHelloStr()">测试调用 Native hello("Hello Android")</button>
+            </li>
+
+            <br/>
+            <li>
+                获取 Android 返回值<br/>
+                代码：<br/>
+                <div>
+                    AndroidNative.getAndroid();
+                </div>
+                <button onclick="callAndroid()">测试调用 getAndroid() 返回 String</button>
+            </li>
+
+            <br/>
+            <li>
+                Android Js 方法调用打印时间差<br/>
+                代码：<br/>
+                <div>
+                    AndroidNative.getAndroidTime();
+                </div>
+                <button onclick="callAndroidTime()">测试调用 getAndroidTime() 返回 String</button>
+            </li>
+        </ul>
+
+        <div class="blog-header">
+            <h3>测试 Js 三种不同对话框</h3>
+        </div>
+
+        <script>
+            function alertFun(){
+                alert("Alert警告对话框!!!");
+            }
+
+            function confirmFun() {
+                if(confirm("访问百度?")){
+                    location.href = "https://www.baidu.com/";
+                }else{
+                    alert("取消访问!!!");
+                }
+            }
+
+            function promptFun() {
+                var word = prompt("温馨提示","请输入点什么...");
+                if(word){
+                    alert("你输入了: " + word)
+                }else{
+                    alert("额~~~,你啥也没写呢!!!");
+                }
+            }
+        </script>
+
+        <ul class="entry">
+            <li>
+                Alert对话框<br/>
+                <input type="submit" name = "Alert" value="Alert对话框" onclick="alertFun()"/>
+            </li>
+
+            <br/>
+            <li>
+                Confirm对话框<br/>
+                <input type="submit" name = "Confirm" value="Confirm对话框" onclick="confirmFun()"/>
+            </li>
+
+            <br/>
+            <li>
+                Prompt对话框<br/>
+                <input type="submit" name = "Prompt" value="Prompt对话框" onclick="promptFun()"/>
+            </li>
+        </ul>
+    </body>
+</html>
